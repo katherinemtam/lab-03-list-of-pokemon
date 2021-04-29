@@ -23,7 +23,8 @@ class App extends Component {
 
   async fetchPokemon() {
     const { nameSearch, sortField } = this.state;
-    console.log(this.state);
+    // console.log to see post state
+    // console.log(this.state);
 
     const response = await request
       .get(POKEMON_API_URL)
@@ -32,7 +33,8 @@ class App extends Component {
       .query({ direction: sortField });
 
     // const hpOptions = [...new Set(response.body.results.map(pokemon => pokemon.hp))];
-    console.log(response.body.results);
+    // console.log for initial state
+    // console.log(response.body.results);
     this.setState({
       pokemon: response.body.results,
       // hp: hpOptions
