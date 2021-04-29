@@ -13,17 +13,17 @@ class PokemonSearch extends Component {
     this.setState({ nameSearch: target.value });
   }
 
-  handleHpFilter = ({ target }) => {
-    this.setState({ hpFilter: target.value });
-  }
+  // handleHpFilter = ({ target }) => {
+  //   this.setState({ hpFilter: target.value });
+  // }
 
-  handleAttackFilter = ({ target }) => {
-    this.setState({ attackFilter: target.value });
-  }
+  // handleAttackFilter = ({ target }) => {
+  //   this.setState({ attackFilter: target.value });
+  // }
 
-  handleDefenseFilter = ({ target }) => {
-    this.setState({ defenseFilter: target.value });
-  }
+  // handleDefenseFilter = ({ target }) => {
+  //   this.setState({ defenseFilter: target.value });
+  // }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -32,8 +32,10 @@ class PokemonSearch extends Component {
 
   render() {
 
-    const { nameSearch, hpFilter, attackFilter, defenseFilter, sortField } = this.state;
-    const { hps } = this.props;
+    const { nameSearch,
+      // hpFilter, attackFilter, defenseFilter, sortField 
+    } = this.state;
+    // const { hps } = this.props;
 
     return (
       <form className="PokemonSearch" onSubmit={this.handleSubmit}>
@@ -44,7 +46,7 @@ class PokemonSearch extends Component {
           onChange={this.handleNameSearch}
         />
 
-        <p>HP:</p>
+        {/*<p>HP:</p>
         <select
           name="hpFilter"
           value={hpFilter}
@@ -60,7 +62,7 @@ class PokemonSearch extends Component {
           ))}
         </select>
 
-        {/*<p>Attack:</p>
+        <p>Attack:</p>
         <select
           name="attackFilter"
           value={attackFilter}

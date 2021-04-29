@@ -13,7 +13,8 @@ class App extends Component {
   state = {
     pokemon: [],
     staticPokemon: [],
-    hp: [],
+    nameSearchApp: '',
+    // hp: [],
   }
 
   async componentDidMount() {
@@ -21,49 +22,55 @@ class App extends Component {
   }
 
   async fetchVillagers() {
-    const { nameSearch } = this.state;
+    const { nameSearchApp } = this.state;
 
     const response = await request
       .get(POKEMON_API_URL)
-      .query({ pokemon: nameSearch });
+      .query({ pokemon: nameSearchApp });
 
-    const hpsOptions = [...new Set(response.body.results.map(pokemon => pokemon.hp))];
+    // const hpsOptions = [...new Set(response.body.results.map(pokemon => pokemon.hp))];
 
     this.setState({
       pokemon: response.body.results,
       staticPokemon: response.body.results,
-      hp: hpsOptions
+      // hp: hpsOptions
     });
   }
 
-  handleSearch = async ({ nameSearch, hpFilter, attackFilter, defenseFilter, sortField }) => {
+  handleSearch = async ({ nameSearch,
+    // hpFilter, attackFilter, defenseFilter, sortField 
+  }) => {
 
-    const { staticPokemon } = this.state;
-    const searchedData = staticPokemon
+    // const { staticPokemon } = this.state;
+    // const searchedData = staticPokemon
 
-      .filter(eachPokemon => {
-        return !hpFilter || eachPokemon.hp === Number(hpFilter);
-      })
+    // .filter(eachPokemon => {
+    //   return !hpFilter || eachPokemon.hp === Number(hpFilter);
+    // })
 
-      .filter(eachPokemon => {
-        return !attackFilter || eachPokemon.attack === Number(attackFilter);
-      })
+    // .filter(eachPokemon => {
+    //   return !attackFilter || eachPokemon.attack === Number(attackFilter);
+    // })
 
-      .filter(eachPokemon => {
-        return !defenseFilter || eachPokemon.defense === Number(defenseFilter);
-      })
+    // .filter(eachPokemon => {
+    //   return !defenseFilter || eachPokemon.defense === Number(defenseFilter);
+    // })
 
-      .sort((a, b) => {
-        if (a[sortField] < b[sortField]) return -1;
-        if (a[sortField] > b[sortField]) return 1;
-        return 0;
-      });
-
+    // .sort((a, b) => {
+    //   if (a[sortField] < b[sortField]) return -1;
+    //   if (a[sortField] > b[sortField]) return 1;
+    //   return 0;
+    // });
+    this.setState(
+      { nameSearchApp: nameSearch }, () => this.fetchVillagers());
+    console.log(nameSearch);
   }
 
   render() {
 
-    const { pokemon, hp } = this.state;
+    const { pokemon,
+      // hp 
+    } = this.state;
     // const { hpsOptions, attacksOptions, defensesOptions } = this.props;
 
     return (
@@ -74,9 +81,9 @@ class App extends Component {
         <section className="search-options">
           <PokemonSearch
             onSearch={this.handleSearch}
-            pokemon={pokemon}
-            hps={hp} />
-          {/*attacks={attacksOptions}
+            pokemon={pokemon} />
+          {/*hps={hp} 
+          attacks={attacksOptions}
     defenses={defensesOptions} />*/}
         </section>
 
