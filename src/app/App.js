@@ -15,12 +15,13 @@ class App extends Component {
 
   async componentDidMount() {
     const response = await request.get(POKEMON_API_URL);
+    this.setState({ pokemon: response.body.results });
   }
 
 
   render() {
 
-    const { pokemonData } = this.state;
+    const { pokemon } = this.state;
 
     return (
       <div className="App">
@@ -34,7 +35,7 @@ class App extends Component {
         <main>
 
           Something should appear here
-          <PokemonList pokemonData={pokemonData} />
+          <PokemonList pokemon={pokemon} />
 
         </main>
 

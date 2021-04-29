@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import './PokemonItem.css';
 
 class PokemonItem extends Component {
-  state = {}
   render() {
+
+    const pokemon = this.props.pokemon;
+
+    console.log(pokemon);
+
     return (
       <li className="PokemonItem">
-        <h2>Pokemon Name</h2>
-        <img
-          src=""
-          alt=""
-        />
 
-        <p>type_1</p>
-        <p>type_2</p>
+        <h2>{pokemon.pokemon}</h2>
+        <img
+          src={pokemon.url_image}
+          alt={pokemon.pokemon}
+        />
 
       </li>
     );

@@ -3,19 +3,15 @@ import PokemonItem from './PokemonItem';
 import './PokemonList.css';
 
 class PokemonList extends Component {
-  state = {}
   render() {
 
-    const pokemonData = this.props.pokemonData;
+    const pokemon = this.props.pokemon;
 
     return (
       <ul className="PokemonList">
-        <PokemonItem pokemonData={pokemonData} />
-        <PokemonItem />
-        <PokemonItem />
-        <PokemonItem />
-        <PokemonItem />
-        <PokemonItem />
+        {pokemon.map(eachPokemon => {
+          return <PokemonItem key={eachPokemon._id} pokemon={eachPokemon} />;
+        })}
       </ul>
     );
   }
