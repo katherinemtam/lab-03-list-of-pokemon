@@ -13,20 +13,20 @@ class App extends Component {
   state = {
     pokemon: [],
     staticPokemon: [],
-    nameSearchApp: '',
+    nameSearch: '',
     // hp: [],
   }
 
   async componentDidMount() {
-    this.fetchVillagers();
+    this.fetchPokemon();
   }
 
-  async fetchVillagers() {
-    const { nameSearchApp } = this.state;
+  async fetchPokemon() {
+    const { nameSearch } = this.state;
 
     const response = await request
       .get(POKEMON_API_URL)
-      .query({ pokemon: nameSearchApp });
+      .query({ pokemon: nameSearch });
 
     // const hpsOptions = [...new Set(response.body.results.map(pokemon => pokemon.hp))];
 
@@ -62,7 +62,7 @@ class App extends Component {
     //   return 0;
     // });
     this.setState(
-      { nameSearchApp: nameSearch }, () => this.fetchVillagers());
+      { nameSearch: nameSearch }, () => this.fetchPokemon());
     console.log(nameSearch);
   }
 
