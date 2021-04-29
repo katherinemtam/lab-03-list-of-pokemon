@@ -7,7 +7,7 @@ class PokemonSearch extends Component {
     hpFilter: '',
     // attackFilter: '',
     // defenseFilter: ''
-    sortField: ''
+    sortDirection: ''
   }
 
   handleNameSearch = ({ target }) => {
@@ -15,7 +15,7 @@ class PokemonSearch extends Component {
   }
 
   handleSortChange = ({ target }) => {
-    this.setState({ sortField: target.value });
+    this.setState({ sortDirection: target.value });
   }
   // handleHpFilter = ({ target }) => {
   //   this.setState({ hpFilter: target.value });
@@ -36,7 +36,7 @@ class PokemonSearch extends Component {
 
   render() {
 
-    const { nameSearch, sortField
+    const { nameSearch, sortDirection
       // attackFilter, defenseFilter 
     } = this.state;
     // const { hps } = this.props;
@@ -99,10 +99,10 @@ class PokemonSearch extends Component {
         </select>
         */}
 
-        <p>Sort:</p>
+        <p>Sort Direction:</p>
         <select
-          name="sortField"
-          value={sortField}
+          name="sortDirection"
+          value={sortDirection}
           onChange={this.handleSortChange}
         >
           <option value="">Sort by...</option>

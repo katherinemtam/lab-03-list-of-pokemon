@@ -14,7 +14,7 @@ class App extends Component {
     pokemon: [],
     nameSearch: '',
     // hp: '',
-    sortField: '',
+    sortDirection: '',
   }
 
   async componentDidMount() {
@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   async fetchPokemon() {
-    const { nameSearch, sortField } = this.state;
+    const { nameSearch, sortDirection } = this.state;
     // console.log to see post state
     // console.log(this.state);
 
@@ -30,7 +30,7 @@ class App extends Component {
       .get(POKEMON_API_URL)
       .query({ pokemon: nameSearch })
       .query({ sort: 'pokemon' })
-      .query({ direction: sortField });
+      .query({ direction: sortDirection });
 
     // const hpOptions = [...new Set(response.body.results.map(pokemon => pokemon.hp))];
     // console.log for initial state
@@ -41,14 +41,14 @@ class App extends Component {
     });
   }
 
-  handleSearch = ({ nameSearch, sortField
+  handleSearch = ({ nameSearch, sortDirection
     //  attackFilter, defenseFilter, 
   }) => {
-    console.log(nameSearch, sortField);
+    console.log(nameSearch, sortDirection);
     this.setState(
       {
         nameSearch: nameSearch,
-        sortField: sortField
+        sortDirection: sortDirection
       },
       () => this.fetchPokemon());
 
@@ -69,8 +69,7 @@ class App extends Component {
 
         <section className="search-options">
           <PokemonSearch
-            onSearch={this.handleSearch}
-            pokemon={pokemon} />
+            onSearch={this.handleSearch} />
           {/* hps={hpOptions}  */}
           {/*attacks={attacksOptions}
           defenses={defensesOptions} />*/}
