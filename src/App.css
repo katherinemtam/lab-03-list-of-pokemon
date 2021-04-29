@@ -1,8 +1,21 @@
 .App {
+  height: 100vh;
   display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  background: darkseagreen;
 }
 
-/* TODO: remove **/
-.temp-images {
-  height: 200px;
+.App search-options {
+  background: palegoldenrod;
+  border-bottom: 1px solid darkgreen;
+  padding: 10px 20px;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 10px;
+}
+  
+.App main {
+  overflow: auto;
+  padding: 20px;
 }
