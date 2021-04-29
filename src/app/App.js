@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import PokemonList from './PokemonList';
+import PokemonList from '../pokemon/PokemonList';
 import request from 'superagent';
 import './App.css';
 
