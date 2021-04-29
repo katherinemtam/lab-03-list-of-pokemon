@@ -6,8 +6,6 @@ class PokemonItem extends Component {
 
     const pokemon = this.props.pokemon;
 
-    console.log(pokemon);
-
     return (
       <li className="PokemonItem">
 
@@ -16,7 +14,9 @@ class PokemonItem extends Component {
           src={pokemon.url_image}
           alt={pokemon.pokemon}
         />
-
+        <p>HP: {pokemon.hp}</p>
+        <p>Attack: {pokemon.attack}</p>
+        <p>Defense: {pokemon.defense}</p>
       </li>
     );
   }

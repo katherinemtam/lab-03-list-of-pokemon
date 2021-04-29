@@ -3,13 +3,11 @@ import './PokemonSearch.css';
 
 class PokemonSearch extends Component {
   state = {
-    nameFilter: '',
-    sortField: '',
-    typeFilter: ''
+    nameSearch: '',
   }
 
-  handleNameChange = ({ target }) => {
-    this.setState({ nameFilter: target.value });
+  handleNameSearch = ({ target }) => {
+    this.setState({ nameSearch: target.value });
   }
 
   handleSubmit = (e) => {
@@ -19,15 +17,15 @@ class PokemonSearch extends Component {
 
   render() {
 
-    const { nameFilter } = this.state;
+    const { nameSearch } = this.state;
 
     return (
       <form className="PokemonSearch" onSubmit={this.handleSubmit}>
 
         <input
-          name="nameFilter"
-          value={nameFilter}
-          onChange={this.handleNameChange}
+          name="nameSearch"
+          value={nameSearch}
+          onChange={this.handleNameSearch}
         />
 
         <button>Search</button>

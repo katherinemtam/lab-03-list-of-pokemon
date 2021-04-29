@@ -11,7 +11,8 @@ const POKEMON_API_URL = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
 class App extends Component {
 
   state = {
-    pokemon: []
+    pokemon: [],
+    nameSearch: '',
   }
 
   async componentDidMount() {
@@ -19,6 +20,9 @@ class App extends Component {
     this.setState({ pokemon: response.body.results });
   }
 
+  handleSearch = ({ nameSearch }) => {
+    console.log(nameSearch);
+  }
 
   render() {
 
@@ -30,12 +34,13 @@ class App extends Component {
         <Header />
 
         <section className="search-options">
-          <PokemonSearch />
+          <PokemonSearch
+            onSearch={this.handleSearch}
+            pokemon={pokemon} />
         </section>
 
         <main>
 
-          Something should appear here
           <PokemonList pokemon={pokemon} />
 
         </main>
