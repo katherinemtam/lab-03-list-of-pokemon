@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import PokemonList from '../pokemon/PokemonList';
+import PokemonSearch from '../pokemon/PokemonSearch';
 import request from 'superagent';
 import './App.css';
 
@@ -29,7 +30,7 @@ class App extends Component {
         <Header />
 
         <section className="search-options">
-
+          <PokemonSearch />
         </section>
 
         <main>
