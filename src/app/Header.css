@@ -1,12 +1,14 @@
-.App {
-  height: 100vh;
+  
+.Header {
+  padding: 0px;
   display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  grid-gap: 20px;
-  background: lightblue;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, #FF0000 , #CC0000);
+  color: white;
+  border-bottom: 1px solid darkseagreen;
 }
 
-.App main {
-  overflow: auto;
-  padding: 20px;
+.Header .logo {
+  width: 70%;
 }

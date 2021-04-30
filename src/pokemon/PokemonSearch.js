@@ -47,6 +47,7 @@ class PokemonSearch extends Component {
         <input
           name="nameSearch"
           value={nameSearch}
+          placeholder="Search"
           onChange={this.handleNameSearch}
         />
 
@@ -99,7 +100,7 @@ class PokemonSearch extends Component {
         </select>
         */}
 
-        <p>Sort Direction:</p>
+        <p>Direction:</p>
         <select
           name="sortDirection"
           value={sortDirection}
@@ -110,7 +111,7 @@ class PokemonSearch extends Component {
           <option value="desc">descending</option>
         </select>
 
-        <button>Search</button>
+        <button>Search Pokedex</button>
 
       </form>
     );

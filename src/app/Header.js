@@ -8,7 +8,11 @@ class Header extends Component {
     return (
       <header className="Header">
 
-        <h1>Pokemon</h1>
+        <img
+          className="logo"
+          alt="pokedex logo"
+          src="pokedex.png"
+        />
 
       </header>
     );

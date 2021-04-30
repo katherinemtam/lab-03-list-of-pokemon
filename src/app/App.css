@@ -2,20 +2,22 @@
   height: 100vh;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  background: darkseagreen;
+  background-image: linear-gradient(to right, #CC0000 , #3B4CCA);
 }
 
-.App search-options {
-  background: palegoldenrod;
+.App .search-options {
+  background-image: linear-gradient(to left, #FFDE00, #B3A125);
   border-bottom: 1px solid darkgreen;
   padding: 10px 20px;
-
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-gap: 10px;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
   
 .App main {
   overflow: auto;
   padding: 20px;
+  
 }

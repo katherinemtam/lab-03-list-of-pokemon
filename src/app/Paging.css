@@ -3,7 +3,9 @@
   grid-template-columns: 36px 65px 36px;
   align-items: center;
   justify-items: center;
-  border: 1px solid goldenrod;
+  background: goldenrod;
+  height: 36px;
+  margin-top: 15px;
 }
 
 .Paging button {
@@ -13,12 +15,12 @@
   border: 0;
   outline: 0;
   color: white; 
-  background: goldenrod;
+  background: #3D7DCA;
   transition: all 250ms ease-in-out;
 }
 
 .Paging button:hover {
-    background: sienna;
+    background: #003A70;
 }
 
 
