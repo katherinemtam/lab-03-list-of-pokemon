@@ -1,0 +1,27 @@
+.Paging {
+  display: grid;
+  grid-template-columns: 36px 65px 36px;
+  align-items: center;
+  justify-items: center;
+  border: 1px solid goldenrod;
+}
+
+.Paging button {
+  height: 36px;
+  width: 100%;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  color: white; 
+  background: goldenrod;
+  transition: all 250ms ease-in-out;
+}
+
+.Paging button:hover {
+    background: sienna;
+}
+
+
+.Paging span {
+    font-size: .85rem;
+  }
