@@ -52,6 +52,13 @@ class App extends Component {
         sortDirection: sortDirection
       },
       () => this.fetchPokemon());
+  }
+
+  handlePrevPage = () => {
+
+  }
+
+  handleNextPage = () => {
 
   }
 
@@ -74,7 +81,11 @@ class App extends Component {
           {/* hps={hpOptions}  */}
           {/*attacks={attacksOptions}
           defenses={defensesOptions} />*/}
-          <Paging />
+          <Paging
+            page={page}
+            onPrev={this.hanlePrevPage}
+            onNext={this.handleNextPage}
+          />
         </section>
 
         <main>
