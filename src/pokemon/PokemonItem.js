@@ -9,7 +9,7 @@ class PokemonItem extends Component {
     return (
       <li className="PokemonItem">
 
-        <h2>{pokemon.pokemon}</h2>
+        <h2><a href={pokemon.pokedex}>{pokemon.pokemon}</a></h2>
         <img
           src={pokemon.url_image}
           alt={pokemon.pokemon}
