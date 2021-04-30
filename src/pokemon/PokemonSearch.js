@@ -4,9 +4,7 @@ import './PokemonSearch.css';
 class PokemonSearch extends Component {
   state = {
     nameSearch: '',
-    hpFilter: '',
-    // attackFilter: '',
-    // defenseFilter: ''
+    typeFilter: '',
     sortDirection: ''
   }
 
@@ -17,29 +15,26 @@ class PokemonSearch extends Component {
   handleSortChange = ({ target }) => {
     this.setState({ sortDirection: target.value });
   }
-  // handleHpFilter = ({ target }) => {
-  //   this.setState({ hpFilter: target.value });
-  // }
 
-  // handleAttackFilter = ({ target }) => {
-  //   this.setState({ attackFilter: target.value });
-  // }
-
-  // handleDefenseFilter = ({ target }) => {
-  //   this.setState({ defenseFilter: target.value });
-  // }
+  handleTypeChange = ({ target }) => {
+    this.setState({ typeFilter: target.value });
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.onSearch(this.state);
   }
 
+  componentDidUpdate(prevProp, prevState) {
+    if (prevState !== this.state) {
+      this.props.onSearch(this.state);
+    }
+  }
+
   render() {
 
-    const { nameSearch, sortDirection
-      // attackFilter, defenseFilter 
-    } = this.state;
-    // const { hps } = this.props;
+    const { nameSearch, typeFilter, sortDirection } = this.state;
+    const { pokemon } = this.props;
 
     return (
       <form className="PokemonSearch" onSubmit={this.handleSubmit}>
@@ -47,68 +42,36 @@ class PokemonSearch extends Component {
         <input
           name="nameSearch"
           value={nameSearch}
-          placeholder="Search"
+          placeholder="Search Pokemon"
           onChange={this.handleNameSearch}
         />
 
-        {/* <p>HP:</p>
         <select
-          name="hpFilter"
-          value={hpFilter}
-          onChange={this.handleHpFilter}
+          name="typeFilter"
+          value={typeFilter}
+          onChange={this.handleTypeChange}
         >
-          <option value="">Sort by...</option>
-          {hps.map(hp => (
-            <option
-              key={hp}
-              value={hp}
-            > {hp}
-            </option>
-          ))}
-        </select> */}
+          <option value="">Sort Types</option>
+          {[...new Set(pokemon.map(poke => poke.type_1))]
+            .map(type => (
+              <option
+                key={type}
+                value={type}>
 
-        {/*<p>Attack:</p>
-        <select
-          name="attackFilter"
-          value={attackFilter}
-          onChange={this.handleAttackFilter}
-        >
-          <option value="">Sort by...</option>
-          {attacks.map(attack => (
-            <option
-              key={attack}
-              value={attack}
-            > {attack}
-            </option>
-          ))}
+                {type}
+
+              </option>
+            ))}
         </select>
 
-        <p>Defense:</p>
-        <select
-          name="defenseFilter"
-          value={defenseFilter}
-          onChange={this.handleDefenseFilter}
-        >
-          <option value="">Sort by...</option>
-          {defenses.map(defense => (
-            <option
-              key={defense}
-              value={defense}
-            > {defense}
-            </option>
-          ))}
-        </select>
-        */}
-
-        <p>Direction:</p>
         <select
           name="sortDirection"
           value={sortDirection}
           onChange={this.handleSortChange}
         >
-          <option value="">Sort by...</option>
-          <option value="asc">ascending</option>
-          <option value="desc">descending</option>
+          <option value="">Sort Alphabetically</option>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
         </select>
 
         <button>Search Pokedex</button>

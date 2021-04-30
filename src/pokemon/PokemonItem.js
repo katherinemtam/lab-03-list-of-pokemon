@@ -10,6 +10,7 @@ class PokemonItem extends Component {
       <li className="PokemonItem">
 
         <h2><a href={pokemon.pokedex}>{pokemon.pokemon}</a></h2>
+        <h2>{pokemon.type_1}/{pokemon.type_2}</h2>
         <img
           src={pokemon.url_image}
           alt={pokemon.pokemon}

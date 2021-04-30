@@ -14,7 +14,7 @@ class App extends Component {
   state = {
     pokemon: [],
     nameSearch: '',
-    // hp: '',
+    typeFilter: undefined,
     sortDirection: '',
     page: 1
   }
@@ -24,7 +24,9 @@ class App extends Component {
   }
 
   async fetchPokemon() {
-    const { nameSearch, sortDirection, page } = this.state;
+    const { nameSearch, typeFilter, sortDirection, page } = this.state;
+
+
     // console.log to see post state
     // console.log(this.state);
 
@@ -32,26 +34,26 @@ class App extends Component {
       .get(POKEMON_API_URL)
       .query({ pokemon: nameSearch })
       .query({ sort: 'pokemon' })
+      .query({ type: typeFilter })
       .query({ direction: sortDirection })
       .query({ page: page });
 
-    // const hpOptions = [...new Set(response.body.results.map(pokemon => pokemon.hp))];
     // console.log for initial state
     // console.log(response.body.results);
+
     this.setState({
       pokemon: response.body.results,
-      // hp: hpOptions
     });
   }
 
-  handleSearch = ({ nameSearch, sortDirection, page
-    //  attackFilter, defenseFilter, 
-  }) => {
+  handleSearch = ({ nameSearch, typeFilter, sortDirection }) => {
     //console.log to see if sorting returns
     // console.log(nameSearch, sortDirection);
+
     this.setState(
       {
         nameSearch: nameSearch,
+        typeFilter: typeFilter,
         sortDirection: sortDirection,
         page: 1
       },
@@ -74,11 +76,7 @@ class App extends Component {
 
   render() {
 
-    const { pokemon, page } = this.state;
-    // const { hpOptions,
-    //   // attacksOptions,
-    //   // defensesOptions
-    // } = this.props;
+    const { pokemon, typeFilter, page } = this.state;
 
     return (
       <div className="App">
@@ -87,10 +85,10 @@ class App extends Component {
 
         <section className="search-options">
           <PokemonSearch
-            onSearch={this.handleSearch} />
-          {/* hps={hpOptions}  */}
-          {/*attacks={attacksOptions}
-          defenses={defensesOptions} />*/}
+            onSearch={this.handleSearch}
+            pokemon={pokemon}
+            typeFilter={typeFilter} />
+
           <Paging
             page={page}
             onPrev={this.handlePrevPage}
