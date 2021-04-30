@@ -8,6 +8,7 @@ import request from 'superagent';
 import './App.css';
 
 const POKEMON_API_URL = `https://pokedex-alchemy.herokuapp.com/api/pokedex`;
+const TYPES_API_URL = 'https://pokedex-alchemy.herokuapp.com/api/pokedex/types';
 
 class App extends Component {
 
@@ -15,12 +16,14 @@ class App extends Component {
     pokemon: [],
     nameSearch: '',
     typeFilter: undefined,
+    typesArray: [],
     sortDirection: undefined,
     page: 1
   }
 
   async componentDidMount() {
     this.fetchPokemon();
+    this.fetchTypes();
   }
 
   async fetchPokemon() {
@@ -43,6 +46,14 @@ class App extends Component {
 
     this.setState({
       pokemon: response.body.results,
+    });
+  }
+
+  async fetchTypes() {
+    const response = await request.get(TYPES_API_URL);
+
+    this.setState({
+      typesArray: response.body.map(pokemon => pokemon.type)
     });
   }
 
@@ -76,7 +87,7 @@ class App extends Component {
 
   render() {
 
-    const { pokemon, typeFilter, page } = this.state;
+    const { pokemon, typeFilter, typesArray, page } = this.state;
 
     return (
       <div className="App">
@@ -87,7 +98,8 @@ class App extends Component {
           <PokemonSearch
             onSearch={this.handleSearch}
             pokemon={pokemon}
-            typeFilter={typeFilter} />
+            typeFilter={typeFilter}
+            types={typesArray} />
 
           <Paging
             page={page}
