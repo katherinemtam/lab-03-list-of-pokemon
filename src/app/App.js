@@ -16,6 +16,7 @@ class App extends Component {
     nameSearch: '',
     // hp: '',
     sortDirection: '',
+    page: 1
   }
 
   async componentDidMount() {
@@ -55,16 +56,20 @@ class App extends Component {
   }
 
   handlePrevPage = () => {
-
+    this.setState(state => {
+      return { page: state.page - 1 };
+    });
   }
 
   handleNextPage = () => {
-
+    this.setState(state => {
+      return { page: state.page + 1 };
+    });
   }
 
   render() {
 
-    const { pokemon } = this.state;
+    const { pokemon, page } = this.state;
     // const { hpOptions,
     //   // attacksOptions,
     //   // defensesOptions
@@ -83,7 +88,7 @@ class App extends Component {
           defenses={defensesOptions} />*/}
           <Paging
             page={page}
-            onPrev={this.hanlePrevPage}
+            onPrev={this.handlePrevPage}
             onNext={this.handleNextPage}
           />
         </section>
