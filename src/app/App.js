@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   async fetchPokemon() {
-    const { nameSearch, sortDirection } = this.state;
+    const { nameSearch, sortDirection, page } = this.state;
     // console.log to see post state
     // console.log(this.state);
 
@@ -32,7 +32,8 @@ class App extends Component {
       .get(POKEMON_API_URL)
       .query({ pokemon: nameSearch })
       .query({ sort: 'pokemon' })
-      .query({ direction: sortDirection });
+      .query({ direction: sortDirection })
+      .query({ page: page });
 
     // const hpOptions = [...new Set(response.body.results.map(pokemon => pokemon.hp))];
     // console.log for initial state
@@ -43,28 +44,32 @@ class App extends Component {
     });
   }
 
-  handleSearch = ({ nameSearch, sortDirection
+  handleSearch = ({ nameSearch, sortDirection, page
     //  attackFilter, defenseFilter, 
   }) => {
-    console.log(nameSearch, sortDirection);
+    //console.log to see if sorting returns
+    // console.log(nameSearch, sortDirection);
     this.setState(
       {
         nameSearch: nameSearch,
-        sortDirection: sortDirection
+        sortDirection: sortDirection,
+        page: 1
       },
       () => this.fetchPokemon());
   }
 
   handlePrevPage = () => {
-    this.setState(state => {
-      return { page: state.page - 1 };
-    });
+    this.setState(
+      { page: Math.max(this.state.page - 1, 1) },
+      () => this.fetchPokemon()
+    );
   }
 
   handleNextPage = () => {
-    this.setState(state => {
-      return { page: state.page + 1 };
-    });
+    this.setState(
+      { page: Math.max(this.state.page + 1) },
+      () => this.fetchPokemon()
+    );
   }
 
   render() {
