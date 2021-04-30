@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import Paging from './Paging';
 import PokemonList from '../pokemon/PokemonList';
 import PokemonSearch from '../pokemon/PokemonSearch';
 import request from 'superagent';
@@ -73,6 +74,7 @@ class App extends Component {
           {/* hps={hpOptions}  */}
           {/*attacks={attacksOptions}
           defenses={defensesOptions} />*/}
+          <Paging />
         </section>
 
         <main>
