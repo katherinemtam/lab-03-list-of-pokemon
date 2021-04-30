@@ -15,7 +15,7 @@ class App extends Component {
     pokemon: [],
     nameSearch: '',
     typeFilter: undefined,
-    sortDirection: '',
+    sortDirection: undefined,
     page: 1
   }
 
@@ -53,8 +53,8 @@ class App extends Component {
     this.setState(
       {
         nameSearch: nameSearch,
-        typeFilter: typeFilter,
-        sortDirection: sortDirection,
+        typeFilter: typeFilter || undefined,
+        sortDirection: sortDirection || undefined,
         page: 1
       },
       () => this.fetchPokemon());

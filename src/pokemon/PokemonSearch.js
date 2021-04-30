@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
+import request from 'superagent';
 import './PokemonSearch.css';
 
 class PokemonSearch extends Component {
   state = {
     nameSearch: '',
     typeFilter: '',
-    sortDirection: ''
+    sortDirection: '',
+    typesArray: []
+  }
+
+  async fetchTypes() {
+    const response = await request.get('https://pokedex-alchemy.herokuapp.com/api/pokedex/types');
+
+    this.setState({
+      typesArray: response.body.map(pokemon => pokemon.type)
+    });
+  }
+
+  componentDidMount() {
+    this.fetchTypes();
   }
 
   handleNameSearch = ({ target }) => {
@@ -33,8 +47,9 @@ class PokemonSearch extends Component {
 
   render() {
 
-    const { nameSearch, typeFilter, sortDirection } = this.state;
+    const { nameSearch, typeFilter, sortDirection, typesArray } = this.state;
     const { pokemon } = this.props;
+    console.log(typesArray);
 
     return (
       <form className="PokemonSearch" onSubmit={this.handleSubmit}>
@@ -52,16 +67,15 @@ class PokemonSearch extends Component {
           onChange={this.handleTypeChange}
         >
           <option value="">Sort Types</option>
-          {[...new Set(pokemon.map(poke => poke.type_1))]
-            .map(type => (
-              <option
-                key={type}
-                value={type}>
+          {typesArray.map(type => (
+            <option
+              key={type}
+              value={type}>
 
-                {type}
+              {type}
 
-              </option>
-            ))}
+            </option>
+          ))}
         </select>
 
         <select
