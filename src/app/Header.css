@@ -1,0 +1,14 @@
+  
+.Header {
+  padding: 0px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, #FF0000 , #CC0000);
+  color: white;
+  border-bottom: 1px solid darkseagreen;
+}
+
+.Header .logo {
+  width: 70%;
+}

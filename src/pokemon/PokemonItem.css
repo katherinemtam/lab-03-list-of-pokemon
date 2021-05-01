@@ -1,0 +1,140 @@
+.PokemonItem {
+  list-style: none;
+  background: lavenderblush;
+  color: darkslateblue;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1px solid darkgray;
+  padding: 10px;
+  margin: 10px;
+
+  height: 200px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.PokemonItem:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  transform: translate(-1px, -1px) scale(1.01);
+}
+
+.PokemonItem h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.PokemonItem .types {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+
+.PokemonItem h3 {
+  margin: 5px;
+  font-size: 0.8rem;
+  color: aliceblue;
+  background-color: #3D7DCA;
+  padding: 5px;
+  border-radius: 20px;
+  font-weight: normal;
+  width: 40px;
+  text-align: center;
+}
+
+.PokemonItem img {
+  height: 100%;
+  width: 100%;
+  min-height: 0;;
+  object-fit: contain;
+}
+
+.PokemonItem p {
+  margin: 0;
+  font-size: .9rem;
+}
+
+.PokemonItem .bug {
+  background-color: #A6B91A;
+}
+
+.PokemonItem .dark {
+  background-color: #705746;
+}
+
+.PokemonItem .dragon {
+  background-color: #6F35FC;
+}
+
+.PokemonItem .electric {
+  background-color: #F7D02C;
+}
+
+.PokemonItem .fairy {
+  background-color: #D685AD;
+}
+
+.PokemonItem .fighting {
+  background-color: #C22E28;
+}
+
+.PokemonItem .fire {
+  background-color: #EE8130;
+}
+
+.PokemonItem .flying {
+  background-color: #A98FF3;
+}
+
+.PokemonItem .ghost {
+  background-color: #735797;
+}
+
+.PokemonItem .grass {
+  background-color: #7AC74C;
+}
+
+.PokemonItem .ground {
+  background-color: #E2BF65;
+}
+
+.PokemonItem .ice {
+  background-color: #96D9D6;
+}
+
+.PokemonItem .normal {
+  background-color: #A8A77A;
+}
+
+.PokemonItem .poison {
+  background-color: #A33EA1;
+}
+
+.PokemonItem .psychic {
+  background-color: #F95587;
+}
+
+.PokemonItem .rock {
+  background-color: #B6A136;
+}
+
+.PokemonItem .steal {
+  background-color: #B7B7CE;
+}
+
+.PokemonItem .water {
+  background-color: #6390F0;
+}
+
+.PokemonItem .NA {
+  background-color: rgb(34, 50, 85);
+}
+
+
+

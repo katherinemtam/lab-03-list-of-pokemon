@@ -1,0 +1,34 @@
+.PokemonSearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PokemonSearch input {
+    width: 200px;
+    height: 30px;
+    outline: 0;
+    flex-grow: 2;
+    margin: 10px;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.PokemonSearch select {
+  width: 200px;
+  height: 40px;
+  outline: 0;
+  flex-grow: 1;
+  margin: 10px;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.PokemonSearch button {
+    height: 35px;
+    width: 100px;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+  }
