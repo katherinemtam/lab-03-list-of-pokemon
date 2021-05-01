@@ -81,6 +81,7 @@ class App extends Component {
   handleNextPage = () => {
     this.setState(
       { page: Math.max(this.state.page + 1) },
+      //math.ceil
       () => this.fetchPokemon()
     );
   }
