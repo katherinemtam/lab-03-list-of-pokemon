@@ -1,11 +1,17 @@
 .Paging {
   display: grid;
-  grid-template-columns: 36px 65px 36px;
+  grid-template-columns: 170px 36px 65px 36px;
   align-items: center;
-  justify-items: center;
-  background: goldenrod;
-  height: 36px;
-  margin-top: 15px;
+  justify-content: center;
+  height: 70px;
+}
+
+.Paging select {
+  width: 150px;
+  height: 40px;
+  flex-grow: 1;
+  border-radius: 20px;
+  padding: 5px;
 }
 
 .Paging button {
@@ -26,4 +32,9 @@
 
 .Paging span {
     font-size: .85rem;
+    background: goldenrod;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
