@@ -18,7 +18,8 @@ class App extends Component {
     typeFilter: undefined,
     typesArray: [],
     sortDirection: undefined,
-    page: 1
+    page: 1,
+    pokemonPerPage: 25
   }
 
   async componentDidMount() {
@@ -27,7 +28,7 @@ class App extends Component {
   }
 
   async fetchPokemon() {
-    const { nameSearch, typeFilter, sortDirection, page } = this.state;
+    const { nameSearch, typeFilter, sortDirection, page, pokemonPerPage } = this.state;
 
 
     // console.log to see post state
@@ -39,7 +40,8 @@ class App extends Component {
       .query({ sort: 'pokemon' })
       .query({ type: typeFilter })
       .query({ direction: sortDirection })
-      .query({ page: page });
+      .query({ page: page })
+      .query({ perPage: pokemonPerPage });
 
     // console.log for initial state
     // console.log(response.body.results);
@@ -66,9 +68,17 @@ class App extends Component {
         nameSearch: nameSearch,
         typeFilter: typeFilter || undefined,
         sortDirection: sortDirection || undefined,
-        page: 1
+        page: 1,
+        pokemonPerPage: 25
       },
       () => this.fetchPokemon());
+  }
+
+  handlePokemonPerPage = ({ pokemonPerPage }) => {
+    this.setState(
+      { pokemonPerPage: pokemonPerPage },
+      () => this.fetchPokemon()
+    );
   }
 
   handlePrevPage = () => {
@@ -103,6 +113,7 @@ class App extends Component {
             types={typesArray} />
 
           <Paging
+            onPerPageChange={this.handlePokemonPerPage}
             page={page}
             onPrev={this.handlePrevPage}
             onNext={this.handleNextPage}
