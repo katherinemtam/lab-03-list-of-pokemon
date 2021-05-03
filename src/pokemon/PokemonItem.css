@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 .PokemonItem {
   list-style: none;
   background: lavenderblush;
